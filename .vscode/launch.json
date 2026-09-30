@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "EntradasMvc (http)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/EntradasMvc/bin/Debug/net10.0/EntradasMvc.dll",
+            "cwd": "${workspaceFolder}/EntradasMvc",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5143"
+            }
+        }
+    ]
+}
