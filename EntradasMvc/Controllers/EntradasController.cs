@@ -1,4 +1,5 @@
 using EntradasMvc.Models;
+using EntradasMvc.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EntradasMvc.Controllers;
@@ -8,19 +9,21 @@ public class EntradasController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        var modelo = new Cotizacion();
-        return View(modelo);
+        var viewModel = new CotizacionInputViewModel();
+
+        return View(viewModel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Calcular(Cotizacion modelo)
+    public IActionResult Calcular(CotizacionInputViewModel viewModel)
     {
         if (!ModelState.IsValid)
         {
-            return View("Index", modelo);
+            return View("Index", viewModel);
         }
 
-        return View("Resultado", modelo);
+        return Content(
+            $"Cliente: {viewModel.Cliente} - Cantidad: {viewModel.Cantidad}");
     }
 }
