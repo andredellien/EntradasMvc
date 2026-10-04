@@ -21,6 +21,16 @@
         <span asp-validation-for="Cantidad" class="text-danger"></span>
     </div>
 
+    <div class="mb-3">
+        <label asp-for="TipoEntrada" class="form-label"></label>
+        <select asp-for="TipoEntrada" class="form-select">
+            <option value="">Seleccione un tipo</option>
+            <option value="General">General</option>
+            <option value="VIP">VIP</option>
+        </select>
+        <span asp-validation-for="TipoEntrada" class="text-danger"></span>
+    </div>
+
     <button type="submit" class="btn btn-primary">Calcular</button>
 </form>
 
