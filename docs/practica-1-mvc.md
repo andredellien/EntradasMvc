@@ -1,6 +1,8 @@
-# EntradasMvc
+# Práctica 1: mi primera aplicación MVC
 
 Práctica guiada **"Mi primera aplicación MVC"** · Web III · ASP.NET Core MVC · .NET 10.
+
+> Este documento describe el proyecto tal como quedó al terminar la práctica 1, guardado en el tag [`practica-1-mvc`](https://github.com/andredellien/EntradasMvc/tree/practica-1-mvc). La rama `main` continúa con la práctica de ViewModels.
 
 Cotizador de entradas para un evento. Un formulario recibe el nombre del cliente y la cantidad de entradas; el servidor valida los datos y muestra el desglose del precio. Cada entrada cuesta **Bs 50** y desde **5 entradas** se aplica un **10 % de descuento**. La aplicación calcula una cotización: no registra compras ni guarda información.
 
@@ -16,11 +18,11 @@ Abrir `http://localhost:5143/Entradas` o pulsar **Cotizar entradas** en el menú
 
 | Parte | Archivo | Responsabilidad |
 |---|---|---|
-| Modelo | [`EntradasMvc/Models/Cotizacion.cs`](EntradasMvc/Models/Cotizacion.cs) | Datos de entrada, validaciones y regla del descuento |
-| Controlador | [`EntradasMvc/Controllers/EntradasController.cs`](EntradasMvc/Controllers/EntradasController.cs) | `Index` (GET) muestra el formulario; `Calcular` (POST) recibe, valida y elige la vista |
-| Vista | [`EntradasMvc/Views/Entradas/Index.cshtml`](EntradasMvc/Views/Entradas/Index.cshtml) | Formulario con validación |
-| Vista | [`EntradasMvc/Views/Entradas/Resultado.cshtml`](EntradasMvc/Views/Entradas/Resultado.cshtml) | Tabla con el desglose calculado por el modelo |
-| Layout | [`EntradasMvc/Views/Shared/_Layout.cshtml`](EntradasMvc/Views/Shared/_Layout.cshtml) | Enlace **Cotizar entradas** en el menú |
+| Modelo | [`EntradasMvc/Models/Cotizacion.cs`](https://github.com/andredellien/EntradasMvc/blob/practica-1-mvc/EntradasMvc/Models/Cotizacion.cs) | Datos de entrada, validaciones y regla del descuento |
+| Controlador | [`EntradasMvc/Controllers/EntradasController.cs`](https://github.com/andredellien/EntradasMvc/blob/practica-1-mvc/EntradasMvc/Controllers/EntradasController.cs) | `Index` (GET) muestra el formulario; `Calcular` (POST) recibe, valida y elige la vista |
+| Vista | [`EntradasMvc/Views/Entradas/Index.cshtml`](https://github.com/andredellien/EntradasMvc/blob/practica-1-mvc/EntradasMvc/Views/Entradas/Index.cshtml) | Formulario con validación |
+| Vista | [`EntradasMvc/Views/Entradas/Resultado.cshtml`](https://github.com/andredellien/EntradasMvc/blob/practica-1-mvc/EntradasMvc/Views/Entradas/Resultado.cshtml) | Tabla con el desglose calculado por el modelo |
+| Layout | [`EntradasMvc/Views/Shared/_Layout.cshtml`](https://github.com/andredellien/EntradasMvc/blob/practica-1-mvc/EntradasMvc/Views/Shared/_Layout.cshtml) | Enlace **Cotizar entradas** en el menú |
 
 ## Capturas de las verificaciones
 
@@ -28,37 +30,37 @@ Abrir `http://localhost:5143/Entradas` o pulsar **Cotizar entradas** en el menú
 
 `AddControllersWithViews()` registra MVC y `MapControllerRoute` define el patrón `{controller=Home}/{action=Index}/{id?}`.
 
-![Program.cs](docs/capturas/01-program-cs.jpg)
+![Program.cs](capturas/01-program-cs.jpg)
 
 ### 2 a 4. Modelo, controlador y vistas en sus carpetas
 
 `Models/Cotizacion.cs`, `Controllers/EntradasController.cs` y `Views/Entradas/` con `Index.cshtml` y `Resultado.cshtml`.
 
-![Estructura y modelo](docs/capturas/02-estructura-y-modelo.jpg)
+![Estructura y modelo](capturas/02-estructura-y-modelo.jpg)
 
 ### 5. Menú y formulario inicial
 
 Al pulsar **Cotizar entradas** aparece el formulario con cantidad inicial 1.
 
-![Formulario inicial](docs/capturas/03-formulario-inicial.png)
+![Formulario inicial](capturas/03-formulario-inicial.png)
 
 ### 6.1. Pruebas del formulario
 
 | Prueba | Datos | Resultado esperado | Resultado obtenido | Captura |
 |---|---|---|---|---|
-| 1 | Nombre vacío, cantidad 2 | No se acepta el formulario | "Ingrese el nombre del cliente." | [prueba-1](docs/capturas/prueba-1.png) |
-| 2 | Nombre `AB`, cantidad 2 | Aviso de longitud mínima | "El nombre debe tener entre 3 y 60 caracteres." | [prueba-2](docs/capturas/prueba-2.png) |
-| 3 | Ana Pérez, cantidad 0 | Aviso: cantidad entre 1 y 10 | "La cantidad debe estar entre 1 y 10." | [prueba-3](docs/capturas/prueba-3.png) |
-| 4 | Ana Pérez, cantidad 2 | Subtotal 100, descuento 0, total 100 | Bs 100,00 · Bs 0,00 · Bs 100,00 | [prueba-4](docs/capturas/prueba-4.png) |
-| 5 | Ana Pérez, cantidad 5 | Subtotal 250, descuento 25, total 225 | Bs 250,00 · Bs 25,00 · Bs 225,00 | [prueba-5](docs/capturas/prueba-5.png) |
-| 6 | Ana Pérez, cantidad 10 | Subtotal 500, descuento 50, total 450 | Bs 500,00 · Bs 50,00 · Bs 450,00 | [prueba-6](docs/capturas/prueba-6.png) |
-| 7 | Ana Pérez, cantidad 11 | No se acepta el formulario | "La cantidad debe estar entre 1 y 10." | [prueba-7](docs/capturas/prueba-7.png) |
+| 1 | Nombre vacío, cantidad 2 | No se acepta el formulario | "Ingrese el nombre del cliente." | [prueba-1](capturas/prueba-1.png) |
+| 2 | Nombre `AB`, cantidad 2 | Aviso de longitud mínima | "El nombre debe tener entre 3 y 60 caracteres." | [prueba-2](capturas/prueba-2.png) |
+| 3 | Ana Pérez, cantidad 0 | Aviso: cantidad entre 1 y 10 | "La cantidad debe estar entre 1 y 10." | [prueba-3](capturas/prueba-3.png) |
+| 4 | Ana Pérez, cantidad 2 | Subtotal 100, descuento 0, total 100 | Bs 100,00 · Bs 0,00 · Bs 100,00 | [prueba-4](capturas/prueba-4.png) |
+| 5 | Ana Pérez, cantidad 5 | Subtotal 250, descuento 25, total 225 | Bs 250,00 · Bs 25,00 · Bs 225,00 | [prueba-5](capturas/prueba-5.png) |
+| 6 | Ana Pérez, cantidad 10 | Subtotal 500, descuento 50, total 450 | Bs 500,00 · Bs 50,00 · Bs 450,00 | [prueba-6](capturas/prueba-6.png) |
+| 7 | Ana Pérez, cantidad 11 | No se acepta el formulario | "La cantidad debe estar entre 1 y 10." | [prueba-7](capturas/prueba-7.png) |
 
 El separador decimal aparece como coma porque el equipo usa cultura en español.
 
 **Resultado con 5 entradas y total Bs 225:**
 
-![Resultado con 5 entradas](docs/capturas/prueba-5.png)
+![Resultado con 5 entradas](capturas/prueba-5.png)
 
 ### 6.2. Recorrido con puntos de interrupción
 
@@ -66,11 +68,11 @@ Puntos de interrupción en `var modelo = new Cotizacion();` y en `if (!ModelStat
 
 Al abrir el formulario, la ejecución se detiene en `Index`. Después de avanzar una línea, `modelo` tiene `Cantidad = 1`.
 
-![Detenido en Index](docs/capturas/04-breakpoint-index.jpg)
+![Detenido en Index](capturas/04-breakpoint-index.jpg)
 
 Al enviar **Ana Pérez** con cantidad **5**, la ejecución se detiene en `Calcular`. El panel de variables muestra los datos recibidos por el model binding: `Cliente = "Ana Pérez"` y `Cantidad = 5`. Las propiedades calculadas valen `Subtotal = 250`, `Descuento = 25.00` y `Total = 225.00`. `ModelState.IsValid` es `true`.
 
-![Detenido en Calcular](docs/capturas/05-breakpoint-calcular.jpg)
+![Detenido en Calcular](capturas/05-breakpoint-calcular.jpg)
 
 > La depuración se hizo en Visual Studio Code con la extensión C# de Microsoft, porque el equipo usa macOS y Visual Studio para Windows no está disponible en ese sistema. Los pasos equivalen a los de Visual Studio: clic en el margen o F9 para el punto de interrupción, F10 para avanzar y F5 para continuar. La configuración está en `.vscode/launch.json`.
 
@@ -78,7 +80,7 @@ Al enviar **Ana Pérez** con cantidad **5**, la ejecución se detiene en `Calcul
 
 Se agregó temporalmente `novalidate` al formulario y se comentó la sección `Scripts`. Al enviar Ana Pérez con cantidad 0, la solicitud llegó a `/Entradas/Calcular`, `ModelState.IsValid` fue `false` y el controlador devolvió `Index` con los errores, sin mostrar `Resultado`. Después se restauraron `novalidate` y la sección `Scripts`.
 
-![Validación del servidor](docs/capturas/06-validacion-servidor.png)
+![Validación del servidor](capturas/06-validacion-servidor.png)
 
 ## Registro de lo observado
 
@@ -116,6 +118,6 @@ Porque la validación del navegador se puede saltar. Basta con desactivar JavaSc
 ## Entregables
 
 - Enlace del repositorio en GitHub, sin `bin` ni `obj`, que están excluidos por `.gitignore`.
-- Captura del resultado con 5 entradas y total Bs 225: [`docs/capturas/prueba-5.png`](docs/capturas/prueba-5.png).
-- Captura del depurador detenido en `Calcular` con los datos recibidos: [`docs/capturas/05-breakpoint-calcular.jpg`](docs/capturas/05-breakpoint-calcular.jpg).
+- Captura del resultado con 5 entradas y total Bs 225: [`docs/capturas/prueba-5.png`](capturas/prueba-5.png).
+- Captura del depurador detenido en `Calcular` con los datos recibidos: [`docs/capturas/05-breakpoint-calcular.jpg`](capturas/05-breakpoint-calcular.jpg).
 - Las cinco respuestas, en la sección anterior.
