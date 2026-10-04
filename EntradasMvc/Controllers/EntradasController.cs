@@ -23,7 +23,20 @@ public class EntradasController : Controller
             return View("Index", viewModel);
         }
 
-        return Content(
-            $"Cliente: {viewModel.Cliente} - Cantidad: {viewModel.Cantidad}");
+        var cotizacion = new Cotizacion
+        {
+            Cliente = viewModel.Cliente,
+            Cantidad = viewModel.Cantidad
+        };
+
+        var resultadoViewModel = new ResultadoCotizacionViewModel
+        {
+            Cotizacion = cotizacion,
+            Evento = "Concierto Web III",
+            FechaEvento = new DateTime(2026, 11, 15),
+            Mensaje = "Gracias por realizar su cotización."
+        };
+
+        return View("Resultado", resultadoViewModel);
     }
 }
